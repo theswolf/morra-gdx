@@ -1,0 +1,145 @@
+
+morrares.png
+size: 1024,1024
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background
+  rotate: false
+  xy: 2, 536
+  size: 800, 480
+  orig: 800, 480
+  offset: 0, 0
+  index: -1
+cinque
+  rotate: false
+  xy: 2, 282
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+due
+  rotate: false
+  xy: 804, 764
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+quattro
+  rotate: false
+  xy: 2, 28
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-cinque
+  rotate: false
+  xy: 150, 282
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-due
+  rotate: false
+  xy: 150, 28
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-quattro
+  rotate: false
+  xy: 298, 282
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-tre
+  rotate: false
+  xy: 298, 28
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-uno
+  rotate: false
+  xy: 446, 282
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+red-zero
+  rotate: false
+  xy: 446, 28
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+tre
+  rotate: false
+  xy: 594, 282
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+uno
+  rotate: false
+  xy: 594, 28
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+yellow-cinque
+  rotate: false
+  xy: 804, 510
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+yellow-due
+  rotate: false
+  xy: 742, 256
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+yellow-quattro
+  rotate: false
+  xy: 742, 2
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+
+morrares2.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+yellow-tre
+  rotate: false
+  xy: 2, 2
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+yellow-uno
+  rotate: false
+  xy: 150, 2
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+yellow-zero
+  rotate: false
+  xy: 298, 2
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
+zero
+  rotate: false
+  xy: 446, 2
+  size: 146, 252
+  orig: 146, 252
+  offset: 0, 0
+  index: -1
