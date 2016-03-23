@@ -29,6 +29,8 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
 
 
 
+
+
     public void init(AssetManager assetManager) {
         this.assetManager = assetManager;
         // set asset manager error handler
@@ -65,5 +67,6 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
     @Override
     public void dispose() {
         assetManager.dispose();
+        font.dispose();
     }
 }

@@ -1,0 +1,4 @@
+convert -size 200x100 xc:rgba\(198,142,23,0.4\) whatever.png
+#convert -size 200x100 xc:rgba\(0,0,0,0.4\) whatever.png
+convert whatever.png -mattecolor Black -frame 7x7+0+3 -frame 3x3+0+3 bordered.png
+convert bordered.png -channel Alpha -evaluate Divide 2 borderedhole.png

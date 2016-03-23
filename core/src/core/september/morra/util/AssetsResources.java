@@ -1,6 +1,13 @@
 package core.september.morra.util;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+
+import core.september.morra.Constants;
 
 
 /**
@@ -29,6 +36,33 @@ public abstract class AssetsResources {
         }
     }
 
+    public class Fonts {
+        //public final BitmapFont defaultSmall;
+        //public final BitmapFont defaultNormal;
+        public final BitmapFont defaultBig;
+
+        public Fonts() {
+
+
+            FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("dkWildBunch.ttf"));
+            FreeTypeFontGenerator.FreeTypeFontParameter parameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
+            parameter.size = Constants.VIEWPORT_HEIGHT / 3;
+            parameter.borderColor = Color.BLACK;
+            parameter.borderWidth = 3;
+            parameter.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
+
+
+            defaultBig = generator.generateFont(parameter);
+            generator.dispose();
+
+
+        }
+
+        public void dispose() {
+            defaultBig.dispose();
+        }
+    }
+
 
     public SimpleAsset background;
     public TripleAsset zero;
@@ -37,6 +71,7 @@ public abstract class AssetsResources {
     public TripleAsset tre;
     public TripleAsset quattro;
     public TripleAsset cinque;
+    public Fonts font;
 
     public void initresources(TextureAtlas atlas) {
         background = new SimpleAsset(atlas,"background");
@@ -46,6 +81,7 @@ public abstract class AssetsResources {
         tre = new TripleAsset(atlas,"tre");
         quattro = new TripleAsset(atlas,"quattro");
         cinque = new TripleAsset(atlas,"cinque");
+        font = new Fonts();
     }
 
 

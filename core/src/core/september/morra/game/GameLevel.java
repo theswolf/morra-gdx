@@ -17,30 +17,58 @@
 
 package core.september.morra.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.Array;
 
-import java.lang.ref.WeakReference;
+import java.util.Random;
 
+import core.september.morra.Constants;
 import core.september.morra.game.objects.GameLevelGraphics;
+import core.september.morra.game.objects.TouchWrapper;
+import core.september.morra.util.Assets;
 
 
 public class GameLevel extends GameLevelGraphics{
 
 	public static final String TAG = GameLevel.class.getName();
 
+    public TouchWrapper currentred;
+    public TouchWrapper currentTouched;
+
+    public Array<TouchWrapper> touchables;
+
+    public int playerBound;
+    public int cpuBound;
+
 
     public GameLevel() {
 		init();
 	}
 
+    public void init() {
+        super.init();
+        touchables.addAll(lower0, lower1, lower2, lower3, lower4, lower5);
+        currentred = null;
+        currentTouched = null;
+
+        touchables = new Array<TouchWrapper>();
+
+        deltaTouch = 0;
+        elapsedTotal = 0;
+        random = new Random();
+        //initLowerHands();
+        //initUpperHands();
+        playerBound = random.nextInt(6)+5;
+        cpuBound = different(playerBound);
+    }
 
 	public void update (float deltaTime) {
         //Gdx.app.log(TAG, String.format("DeltaTime %f DeltaTouch %f", deltaTime, deltaTouch));
 
-        if(touched == null) {
+        if(currentTouched == null) {
             deltaTouch = 0;
         }
         else {
@@ -50,7 +78,8 @@ public class GameLevel extends GameLevelGraphics{
 
         if(deltaTouch > 0.1f) {
             deltaTouch = 0;
-            touched = null;
+            currentTouched.isTouched=false;
+            currentTouched = null;
         }
 
         if(elapsedTotal > 0.2f) {
@@ -59,26 +88,29 @@ public class GameLevel extends GameLevelGraphics{
                 int red = random.nextInt(6);
                 switch (red) {
                     case 0:
-                        currentred = redzero;
+                        currentred = upper0;
                         break;
                     case 1:
-                        currentred = reduno;
+                        currentred = upper1;
                         break;
                     case 2:
-                        currentred = reddue;
+                        currentred = upper2;
                         break;
                     case 3:
-                        currentred = redtre;
+                        currentred = upper3;
                         break;
                     case 4:
-                        currentred = reduattro;
+                        currentred = upper4;
                         break;
                     case 5:
-                        currentred = redcinque;
+                        currentred = upper5;
                         break;
                 }
+
+                currentred.isTouched = true;
             }
             else {
+                currentred.isTouched = false;
                 currentred = null;
             }
         }
@@ -96,51 +128,48 @@ public class GameLevel extends GameLevelGraphics{
 		backGround.draw(batch);
         renderLowerHands(batch);
         renderUpperHands(batch);
-        if(touched != null) {
-            renderLowerHandTouched(batch);
-        }
-        if(currentred != null) {
-            renderUpperHandTouched(batch);
-        }
-
-
+        renderInfos(batch);
 	}
 
+    private void renderInfos(SpriteBatch batch) {
+        BitmapFont font = Assets.instance.font.defaultBig;
+
+        font.setColor(Color.YELLOW);
+        font.draw(batch,String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8,Constants.VIEWPORT_HEIGHT * 0.65f);
+
+        font.setColor(Color.RED);
+        font.draw(batch,String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8)*7,Constants.VIEWPORT_HEIGHT * 0.65f);
+    }
+
     public void renderLowerHands(SpriteBatch batch) {
-        zero.draw(batch);
-        uno.draw(batch);
-        due.draw(batch);
-        tre.draw(batch);
-        quattro.draw(batch);
-        cinque.draw(batch);
+        lower0.getSprite().draw(batch);
+        lower1.getSprite().draw(batch);
+        lower2.getSprite().draw(batch);
+        lower3.getSprite().draw(batch);
+        lower4.getSprite().draw(batch);
+        lower5.getSprite().draw(batch);
+
     }
 
     public void renderUpperHands(SpriteBatch batch) {
-        revertedzero.draw(batch);
-        reverteduno.draw(batch);
-        reverteddue.draw(batch);
-        revertedtre.draw(batch);
-        revertedquattro.draw(batch);
-        revertedcinque.draw(batch);
+        upper0.getSprite().draw(batch);
+        upper1.getSprite().draw(batch);
+        upper2.getSprite().draw(batch);
+        upper3.getSprite().draw(batch);
+        upper4.getSprite().draw(batch);
+        upper5.getSprite().draw(batch);
     }
 
-    public void renderLowerHandTouched(SpriteBatch batch) {
-        touched.draw(batch);
-    }
 
-    public void renderUpperHandTouched(SpriteBatch batch) {
-        currentred.draw(batch);
-    }
 
     public void touched(Vector2 point) {
-        for(Sprite s:touchable) {
-            if (s.getBoundingRectangle().contains(point)) {
-                for(WeakReference<Sprite> ref: yellows.keys()) {
-                    if(ref.get().equals(s)) {
-                        touched = yellows.get(ref).get();
-                        break;
-                    }
+        for(TouchWrapper wrapper: touchables) {
+            if(wrapper.getSprite().getBoundingRectangle().contains(point)) {
+                if(currentTouched != null ) {
+                    currentTouched.isTouched = false;
                 }
+                wrapper.isTouched = true;
+                currentTouched = wrapper;
                 break;
             }
         }

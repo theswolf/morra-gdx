@@ -5,6 +5,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
 
 import core.september.morra.screens.DirectedGame;
+import core.september.morra.screens.WinScreen;
+import core.september.morra.screens.transitions.ScreenTransitionFade;
 import core.september.morra.util.InputTransform;
 
 /**
@@ -51,12 +53,30 @@ public class GameController extends InputAdapter implements Disposable {
 
     public void update (float deltaTime) {
         handleTouch();
+
         level.update(deltaTime);
+
+        if(level.currentred != null) {
+            int currentBound = level.currentred.id + getCurrentPlayer();
+
+            if(currentBound == level.cpuBound || currentBound == level.playerBound) {
+                game.setScreen(
+                        new WinScreen(game, getCurrentPlayer(), level.currentred.id, level.playerBound, level.cpuBound),
+                        ScreenTransitionFade.init(0.5f));
+
+            }
+
+        }
+    }
+
+    public int getCurrentPlayer() {
+        return level.currentTouched != null ?
+                level.currentTouched.id : 0;
     }
 
 
     @Override
     public void dispose() {
-        
+        //game.dispose();
     }
 }

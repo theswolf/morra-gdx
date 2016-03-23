@@ -7,21 +7,30 @@ import com.badlogic.gdx.graphics.GL20;
 import core.september.morra.game.GameController;
 import core.september.morra.game.GameRenderer;
 import core.september.morra.util.GamePreferences;
+import core.september.morra.win.WinController;
+import core.september.morra.win.WinRenderer;
 
 /**
- * Created by christian on 21/03/16.
+ * Created by christian on 23/03/16.
  */
-public class GameScreen extends AbstractGameScreen {
+public class WinScreen extends AbstractGameScreen{
+    private static final String TAG = WinScreen.class.getName();
+    private final int player;
+    private final int playerBound;
+    private final int cpu;
+    private final int cpuBound;
 
-    private static final String TAG = GameScreen.class.getName();
-
-    private GameController worldController;
-    private GameRenderer worldRenderer;
+    private WinController winController;
+    private WinRenderer winRenderer;
 
     private boolean paused;
 
-    public GameScreen(DirectedGame game) {
+    public WinScreen(DirectedGame game,int player,int cpu, int playerBound, int cpuBound) {
         super(game);
+        this.player = player;
+        this.cpu = cpu;
+        this.playerBound = playerBound;
+        this.cpuBound = cpuBound;
     }
 
     @Override
@@ -30,35 +39,35 @@ public class GameScreen extends AbstractGameScreen {
         if (!paused) {
             // Update game world by the time that has passed
             // since last rendered frame.
-            worldController.update(deltaTime);
+            winController.update(deltaTime);
         }
         // Sets the clear screen color to: Cornflower Blue
         Gdx.gl.glClearColor(0x64 / 255.0f, 0x95 / 255.0f, 0xed / 255.0f, 0xff / 255.0f);
         // Clears the screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         // Render game world to screen
-        worldRenderer.render();
+        winRenderer.render();
     }
 
 
     @Override
     public void resize(int width, int height) {
-        worldRenderer.resize(width, height);
+        winRenderer.resize(width, height);
     }
 
     @Override
     public void show() {
         GamePreferences.instance.load();
-        worldController = new GameController(game);
-        worldRenderer = new GameRenderer(worldController);
+        winController = new WinController(game, player, cpu,  playerBound,  cpuBound);
+        winRenderer = new WinRenderer(winController);
         Gdx.input.setCatchBackKey(true);
     }
 
     @Override
     public void hide() {
         GamePreferences.instance.save();
-        worldController.dispose();
-        worldRenderer.dispose();
+        winController.dispose();
+        winRenderer.dispose();
         Gdx.input.setCatchBackKey(false);
     }
 
@@ -76,7 +85,6 @@ public class GameScreen extends AbstractGameScreen {
 
     @Override
     public InputProcessor getInputProcessor() {
-        return worldController;
+        return winController;
     }
 }
-
