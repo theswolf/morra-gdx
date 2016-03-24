@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Interpolation;
 
 import core.september.morra.screens.DirectedGame;
 import core.september.morra.screens.GameScreen;
+import core.september.morra.screens.MenuScreen;
 import core.september.morra.screens.transitions.ScreenTransition;
 import core.september.morra.screens.transitions.ScreenTransitionSlice;
 import core.september.morra.util.Assets;
@@ -40,7 +41,7 @@ public class MorraGame extends DirectedGame {
 
 		ScreenTransition transition = ScreenTransitionSlice.init(2, ScreenTransitionSlice.UP_DOWN, 10, Interpolation.pow5Out);
 
-		setScreen(new GameScreen(this), transition);
+		setScreen(new MenuScreen(this), transition);
 
 	}
 }
