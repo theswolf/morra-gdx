@@ -17,6 +17,7 @@
 
 package core.september.morra.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -40,8 +41,7 @@ public class GameLevel extends GameLevelGraphics{
 
     public Array<TouchWrapper> touchables;
 
-    public int playerBound;
-    public int cpuBound;
+
 
 
     public GameLevel() {
@@ -50,11 +50,12 @@ public class GameLevel extends GameLevelGraphics{
 
     public void init() {
         super.init();
+        touchables = new Array<TouchWrapper>();
         touchables.addAll(lower0, lower1, lower2, lower3, lower4, lower5);
         currentred = null;
         currentTouched = null;
 
-        touchables = new Array<TouchWrapper>();
+
 
         deltaTouch = 0;
         elapsedTotal = 0;
@@ -131,38 +132,13 @@ public class GameLevel extends GameLevelGraphics{
         renderInfos(batch);
 	}
 
-    private void renderInfos(SpriteBatch batch) {
-        BitmapFont font = Assets.instance.font.defaultBig;
 
-        font.setColor(Color.YELLOW);
-        font.draw(batch,String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8,Constants.VIEWPORT_HEIGHT * 0.65f);
 
-        font.setColor(Color.RED);
-        font.draw(batch,String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8)*7,Constants.VIEWPORT_HEIGHT * 0.65f);
-    }
-
-    public void renderLowerHands(SpriteBatch batch) {
-        lower0.getSprite().draw(batch);
-        lower1.getSprite().draw(batch);
-        lower2.getSprite().draw(batch);
-        lower3.getSprite().draw(batch);
-        lower4.getSprite().draw(batch);
-        lower5.getSprite().draw(batch);
-
-    }
-
-    public void renderUpperHands(SpriteBatch batch) {
-        upper0.getSprite().draw(batch);
-        upper1.getSprite().draw(batch);
-        upper2.getSprite().draw(batch);
-        upper3.getSprite().draw(batch);
-        upper4.getSprite().draw(batch);
-        upper5.getSprite().draw(batch);
-    }
 
 
 
     public void touched(Vector2 point) {
+        Gdx.app.log("Handling touch","");
         for(TouchWrapper wrapper: touchables) {
             if(wrapper.getSprite().getBoundingRectangle().contains(point)) {
                 if(currentTouched != null ) {

@@ -1,5 +1,6 @@
 package core.september.morra.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
@@ -28,7 +29,7 @@ public class GameController extends InputAdapter implements Disposable {
     public boolean touchDown (int screenX, int screenY, int pointer, int button) {
         //Gdx.app.log(TAG,String.format("int screenX %d, int screenY %d, int pointer %d, int button %d",screenX, screenY, pointer, button));
         touch = InputTransform.point(screenX,screenY);
-       // Gdx.app.log(TAG, "Touched " + touch);
+        //Gdx.app.log(TAG, "Touched " + touch);
 
         return true;
     }
@@ -56,13 +57,14 @@ public class GameController extends InputAdapter implements Disposable {
 
         level.update(deltaTime);
 
-        if(level.currentred != null) {
+        if(level.currentred != null && level.currentTouched != null ) {
             int currentBound = level.currentred.id + getCurrentPlayer();
 
             if(currentBound == level.cpuBound || currentBound == level.playerBound) {
+                Gdx.app.log(TAG,"Changing screen");
                 game.setScreen(
                         new WinScreen(game, getCurrentPlayer(), level.currentred.id, level.playerBound, level.cpuBound),
-                        ScreenTransitionFade.init(0.5f));
+                        ScreenTransitionFade.init(1.5f));
 
             }
 

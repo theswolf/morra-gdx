@@ -1,6 +1,9 @@
 package core.september.morra.game.objects;
 
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Array;
 
@@ -24,6 +27,9 @@ public class GameLevelGraphics {
     protected float elapsedTotal;
 
     public Sprite backGround;
+
+    public int playerBound;
+    public int cpuBound;
 
     /*public Sprite zero;
     public Sprite uno;
@@ -214,6 +220,35 @@ public class GameLevelGraphics {
         );
         upper5.rotate(rotation);
 
+    }
+
+    public void renderLowerHands(SpriteBatch batch) {
+        lower0.getSprite().draw(batch);
+        lower1.getSprite().draw(batch);
+        lower2.getSprite().draw(batch);
+        lower3.getSprite().draw(batch);
+        lower4.getSprite().draw(batch);
+        lower5.getSprite().draw(batch);
+
+    }
+
+    public void renderUpperHands(SpriteBatch batch) {
+        upper0.getSprite().draw(batch);
+        upper1.getSprite().draw(batch);
+        upper2.getSprite().draw(batch);
+        upper3.getSprite().draw(batch);
+        upper4.getSprite().draw(batch);
+        upper5.getSprite().draw(batch);
+    }
+
+    public void renderInfos(SpriteBatch batch) {
+        BitmapFont font = Assets.instance.font.defaultBig;
+
+        font.setColor(Color.YELLOW);
+        font.draw(batch, String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT * 0.65f);
+
+        font.setColor(Color.RED);
+        font.draw(batch, String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8) * 7, Constants.VIEWPORT_HEIGHT * 0.65f);
     }
 
 }

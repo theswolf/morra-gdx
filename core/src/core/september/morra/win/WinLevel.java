@@ -32,9 +32,10 @@ public class WinLevel extends GameLevelGraphics{
 
 	public static final String TAG = WinLevel.class.getName();
     private final int player;
-    private final int playerBound;
     private final int cpu;
-    private final int cpuBound;
+
+    private TouchWrapper currentPlayer;
+    private TouchWrapper currentCpu;
 
 
     public WinLevel(int player,int cpu, int playerBound, int cpuBound) {
@@ -43,8 +44,71 @@ public class WinLevel extends GameLevelGraphics{
         this.cpu = cpu;
         this.playerBound = playerBound;
         this.cpuBound = cpuBound;
+        setColorizedValue();
 	}
 
+
+    private void setColorizedValue() {
+        switch (this.player) {
+            case 0:
+                currentPlayer = lower0;
+                break;
+            case 1:
+                currentPlayer = lower1;
+                break;
+            case 2:
+                currentPlayer = lower2;
+                break;
+            case 3:
+                currentPlayer = lower3;
+                break;
+            case 4:
+                currentPlayer = lower4;
+                break;
+            case 5:
+                currentPlayer = lower5;
+                break;
+        }
+
+
+
+        switch (this.cpu) {
+            case 0:
+                currentCpu = upper0;
+                break;
+            case 1:
+                currentCpu = upper1;
+                break;
+            case 2:
+                currentCpu = upper2;
+                break;
+            case 3:
+                currentCpu = upper3;
+                break;
+            case 4:
+                currentCpu = upper4;
+                break;
+            case 5:
+                currentCpu = upper5;
+                break;
+        }
+    }
+
+    public void renderColorizedInfos(SpriteBatch batch) {
+        BitmapFont font = Assets.instance.font.defaultBig;
+
+        if(cpu+player == playerBound) {
+            font.setColor(Color.YELLOW);
+            font.draw(batch, String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT * 0.65f);
+
+        }
+
+        else {
+            font.setColor(Color.RED);
+            font.draw(batch, String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8) * 7, Constants.VIEWPORT_HEIGHT * 0.65f);
+        }
+
+    }
 
 	public void update (float deltaTime) {
 
@@ -62,41 +126,13 @@ public class WinLevel extends GameLevelGraphics{
 	}
 
     public void renderColorized(SpriteBatch batch) {
-        // Draw Mountains
-        backGround.draw(batch);
-        renderLowerHands(batch);
-        renderUpperHands(batch);
-        renderInfos(batch);
+        currentPlayer.touched.draw(batch);
+        currentCpu.touched.draw(batch);
+        renderColorizedInfos(batch);
     }
 
-    private void renderInfos(SpriteBatch batch) {
-        BitmapFont font = Assets.instance.font.defaultBig;
 
-        font.setColor(Color.YELLOW);
-        font.draw(batch,String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8,Constants.VIEWPORT_HEIGHT * 0.65f);
 
-        font.setColor(Color.RED);
-        font.draw(batch,String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8)*7,Constants.VIEWPORT_HEIGHT * 0.65f);
-    }
-
-    public void renderLowerHands(SpriteBatch batch) {
-        lower0.getSprite().draw(batch);
-        lower1.getSprite().draw(batch);
-        lower2.getSprite().draw(batch);
-        lower3.getSprite().draw(batch);
-        lower4.getSprite().draw(batch);
-        lower5.getSprite().draw(batch);
-
-    }
-
-    public void renderUpperHands(SpriteBatch batch) {
-        upper0.getSprite().draw(batch);
-        upper1.getSprite().draw(batch);
-        upper2.getSprite().draw(batch);
-        upper3.getSprite().draw(batch);
-        upper4.getSprite().draw(batch);
-        upper5.getSprite().draw(batch);
-    }
 
 
 

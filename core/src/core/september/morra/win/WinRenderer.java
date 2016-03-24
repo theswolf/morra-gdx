@@ -56,7 +56,7 @@ public class WinRenderer implements Disposable {
         batch.setShader(shaderMonochrome);
         shaderMonochrome.setUniformf("u_amount", 1.0f);
         controller.level.render(batch);
-        batch.setShader(null);
+        //batch.setShader(null);
         batch.end();
 
 

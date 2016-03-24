@@ -1,5 +1,6 @@
 package core.september.morra.win;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputAdapter;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Disposable;
@@ -42,7 +43,7 @@ public class WinController extends InputAdapter implements Disposable {
 
 
     public void update (float deltaTime) {
-
+        Gdx.app.log(TAG,"WinController updating");
     }
 
 
