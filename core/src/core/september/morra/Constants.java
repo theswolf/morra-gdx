@@ -60,4 +60,5 @@ public class Constants {
 
     // Max angle of rotation needed to gain maximum movement velocity
     public static final float ACCEL_MAX_ANGLE_MAX_MOVEMENT = 20.0f;
+    public static final String SCORE = "morragame.score";
 }

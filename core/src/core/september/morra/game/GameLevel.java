@@ -30,6 +30,7 @@ import core.september.morra.Constants;
 import core.september.morra.game.objects.GameLevelGraphics;
 import core.september.morra.game.objects.TouchWrapper;
 import core.september.morra.util.Assets;
+import core.september.morra.util.GamePreferences;
 
 
 public class GameLevel extends GameLevelGraphics{
@@ -38,6 +39,8 @@ public class GameLevel extends GameLevelGraphics{
 
     public TouchWrapper currentred;
     public TouchWrapper currentTouched;
+
+    public float deltaTouchBound;
 
     public Array<TouchWrapper> touchables;
 
@@ -54,6 +57,25 @@ public class GameLevel extends GameLevelGraphics{
         touchables.addAll(lower0, lower1, lower2, lower3, lower4, lower5);
         currentred = null;
         currentTouched = null;
+
+        int gameLevel = GamePreferences.instance.gameLevel;
+        switch (gameLevel) {
+            case 0:
+                deltaTouchBound = 0.8f;
+                break;
+            case 1:
+                deltaTouchBound = 0.6f;
+                break;
+            case 2:
+                deltaTouchBound = 0.4f;
+                break;
+            case 3:
+                deltaTouchBound = 0.2f;
+                break;
+
+        }
+
+        Gdx.app.log(TAG,"DeltaTouchBound is "+deltaTouchBound);
 
 
 
@@ -83,7 +105,7 @@ public class GameLevel extends GameLevelGraphics{
             currentTouched = null;
         }
 
-        if(elapsedTotal > 0.2f) {
+        if(elapsedTotal > deltaTouchBound) {
             elapsedTotal = 0;
             if(currentred == null) {
                 int red = random.nextInt(6);

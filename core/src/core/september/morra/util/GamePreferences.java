@@ -36,6 +36,7 @@ public class GamePreferences {
 	public int charSkin;
 	public boolean showFpsCounter;
 	public boolean useMonochromeShader;
+	public int gameLevel;
 
 	private Preferences prefs;
 
@@ -52,6 +53,7 @@ public class GamePreferences {
 		charSkin = MathUtils.clamp(prefs.getInteger("charSkin", 0), 0, 2);
 		showFpsCounter = prefs.getBoolean("showFpsCounter", false);
 		useMonochromeShader = prefs.getBoolean("useMonochromeShader", false);
+		gameLevel = prefs.getInteger("gameLevel",0);
 	}
 
 	public void save () {
@@ -62,6 +64,7 @@ public class GamePreferences {
 		prefs.putInteger("charSkin", charSkin);
 		prefs.putBoolean("showFpsCounter", showFpsCounter);
 		prefs.putBoolean("useMonochromeShader", useMonochromeShader);
+		prefs.putInteger("gameLevel",gameLevel);
 		prefs.flush();
 	}
 
