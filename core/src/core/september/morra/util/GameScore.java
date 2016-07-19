@@ -5,6 +5,7 @@ import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.MathUtils;
 
 import core.september.morra.Constants;
+import core.september.morra.game.GameLevel;
 
 /**
  * Created by christian on 25/03/16.
@@ -41,22 +42,29 @@ public class GameScore {
     }
 
     public void win() {
+        load();
         winInARow = winInARow+1;
         wins = wins+1;
         save();
     }
 
     public void loose() {
+        load();
         winInARow = 0;
         loose = loose+1;
         save();
     }
 
     public void nextRound() {
-        prefs.putInteger("round",prefs.getInteger("round")+1);
+
+        int put = (prefs.getInteger("round")+1)% GameLevel.matches;
+        prefs.putInteger("round",put);
+        Gdx.app.log(TAG,"Putting "+put);
     }
 
     public boolean hasNextRound() {
-        return prefs.getInteger("round",0) < 3;
+
+        Gdx.app.log(TAG,"Has next round "+prefs.getInteger("round",0));
+        return prefs.getInteger("round",0) < GameLevel.matches - 1;
     }
 }

@@ -40,7 +40,7 @@ public class GameLevel extends GameLevelGraphics{
     public TouchWrapper currentred;
     public TouchWrapper currentTouched;
 
-    public float deltaTouchBound;
+    public static int matches;
 
     public Array<TouchWrapper> touchables;
 
@@ -61,21 +61,21 @@ public class GameLevel extends GameLevelGraphics{
         int gameLevel = GamePreferences.instance.gameLevel;
         switch (gameLevel) {
             case 0:
-                deltaTouchBound = 0.8f;
+                matches = 3;
                 break;
             case 1:
-                deltaTouchBound = 0.6f;
+                matches = 5;
                 break;
             case 2:
-                deltaTouchBound = 0.4f;
+                matches = 7;
                 break;
             case 3:
-                deltaTouchBound = 0.2f;
+                matches = 9;
                 break;
 
         }
 
-        Gdx.app.log(TAG,"DeltaTouchBound is "+deltaTouchBound);
+        Gdx.app.log(TAG,"Matches are "+matches);
 
 
 
@@ -105,7 +105,7 @@ public class GameLevel extends GameLevelGraphics{
             currentTouched = null;
         }
 
-        if(elapsedTotal > deltaTouchBound) {
+        if(elapsedTotal > 0.2f) {
             elapsedTotal = 0;
             if(currentred == null) {
                 int red = random.nextInt(6);
