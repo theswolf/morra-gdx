@@ -30,6 +30,8 @@ import core.september.morra.Constants;
 import core.september.morra.game.objects.GameLevelGraphics;
 import core.september.morra.game.objects.TouchWrapper;
 import core.september.morra.util.Assets;
+import core.september.morra.util.AssetsResources;
+import core.september.morra.util.AudioManager;
 import core.september.morra.util.GamePreferences;
 
 
@@ -167,6 +169,7 @@ public class GameLevel extends GameLevelGraphics{
                     currentTouched.isTouched = false;
                 }
                 wrapper.isTouched = true;
+                AudioManager.instance.play(Assets.instance.sounds.clap);
                 currentTouched = wrapper;
                 break;
             }

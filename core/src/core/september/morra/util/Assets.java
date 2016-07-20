@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetDescriptor;
 import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.utils.Disposable;
@@ -38,6 +39,9 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
         // load texture atlas
         assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
         // start loading assets and wait until finished
+
+        assetManager.load(Constants.CLAP_SOUND, Sound.class);
+
         assetManager.finishLoading();
 
         Gdx.app.debug(TAG,
@@ -53,7 +57,7 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
             t.setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         }
 
-        initresources(atlas);
+        initresources(assetManager);
 
     }
 

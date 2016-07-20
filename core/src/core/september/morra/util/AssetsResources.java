@@ -1,6 +1,8 @@
 package core.september.morra.util;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
@@ -20,6 +22,16 @@ public abstract class AssetsResources {
 
         public SimpleAsset(TextureAtlas atlas,String regionName) {
             region = atlas.findRegion(regionName);
+        }
+    }
+
+    public class AssetSounds {
+
+        public final Sound clap;
+
+        public AssetSounds(AssetManager am) {
+            clap = am.get(Constants.CLAP_SOUND, Sound.class);
+
         }
     }
 
@@ -65,6 +77,7 @@ public abstract class AssetsResources {
 
 
     public SimpleAsset background;
+    public AssetSounds sounds;
     public TripleAsset zero;
     public TripleAsset uno;
     public TripleAsset due;
@@ -73,7 +86,11 @@ public abstract class AssetsResources {
     public TripleAsset cinque;
     public Fonts font;
 
-    public void initresources(TextureAtlas atlas) {
+    public void initresources(AssetManager manager) {
+
+        TextureAtlas atlas = manager.get(Constants.TEXTURE_ATLAS_OBJECTS);
+
+
         background = new SimpleAsset(atlas,"background");
         zero = new TripleAsset(atlas,"zero");
         uno = new TripleAsset(atlas,"uno");
@@ -82,6 +99,7 @@ public abstract class AssetsResources {
         quattro = new TripleAsset(atlas,"quattro");
         cinque = new TripleAsset(atlas,"cinque");
         font = new Fonts();
+        sounds = new AssetSounds(manager);
     }
 
 
