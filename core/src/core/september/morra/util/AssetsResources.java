@@ -2,6 +2,7 @@ package core.september.morra.util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -32,6 +33,15 @@ public abstract class AssetsResources {
         public AssetSounds(AssetManager am) {
             clap = am.get(Constants.CLAP_SOUND, Sound.class);
 
+        }
+    }
+
+    public class AssetMusic {
+
+        public final Music soundtrack;
+
+        public AssetMusic(AssetManager am) {
+            soundtrack = am.get(Constants.MUSIC, Music.class);
         }
     }
 
@@ -78,6 +88,7 @@ public abstract class AssetsResources {
 
     public SimpleAsset background;
     public AssetSounds sounds;
+    public AssetMusic music;
     public TripleAsset zero;
     public TripleAsset uno;
     public TripleAsset due;
@@ -85,6 +96,7 @@ public abstract class AssetsResources {
     public TripleAsset quattro;
     public TripleAsset cinque;
     public Fonts font;
+
 
     public void initresources(AssetManager manager) {
 
@@ -100,6 +112,7 @@ public abstract class AssetsResources {
         cinque = new TripleAsset(atlas,"cinque");
         font = new Fonts();
         sounds = new AssetSounds(manager);
+        music = new AssetMusic(manager);
     }
 
 

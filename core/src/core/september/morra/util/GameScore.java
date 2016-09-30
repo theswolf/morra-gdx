@@ -3,6 +3,8 @@ package core.september.morra.util;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Json;
 
 import core.september.morra.Constants;
 import core.september.morra.game.GameLevel;
@@ -21,6 +23,10 @@ public class GameScore {
     public int wins;
     public int loose;
     public int round;
+    public Array<Match> matches = new Array<Match>();
+
+    private Json json;
+
 
     // singleton: prevent instantiation from other classes
     private GameScore () {
@@ -28,23 +34,35 @@ public class GameScore {
 
     }
 
+    private Json getJson() {
+        if(json == null) {
+            json = new Json();
+        }
+        return json;
+    }
+
     public void load () {
         winInARow = prefs.getInteger("winInARow",0);
         wins = prefs.getInteger("wins",0);
         loose = prefs.getInteger("loose", 0);
+        //String matches = json.toJson(person);
+        matches  = getJson().fromJson(Array.class, prefs.getString("matches"));
     }
 
     public void save () {
         prefs.putInteger("winInARow",winInARow);
         prefs.putInteger("wins",wins);
         prefs.putInteger("loose",loose);
+        prefs.putString("matches",getJson().toJson(matches));
         prefs.flush();
+
     }
 
     public void win() {
         load();
         winInARow = winInARow+1;
         wins = wins+1;
+        matches.add(new Match(true));
         save();
     }
 
@@ -52,6 +70,13 @@ public class GameScore {
         load();
         winInARow = 0;
         loose = loose+1;
+        matches.add(new Match(false));
+        save();
+    }
+
+    public void resetMatches() {
+        load();
+        matches = new Array<Match>();
         save();
     }
 

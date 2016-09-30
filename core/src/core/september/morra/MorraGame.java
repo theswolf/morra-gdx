@@ -11,6 +11,8 @@ import core.september.morra.screens.MenuScreen;
 import core.september.morra.screens.transitions.ScreenTransition;
 import core.september.morra.screens.transitions.ScreenTransitionSlice;
 import core.september.morra.util.Assets;
+import core.september.morra.util.AudioManager;
+import core.september.morra.util.GamePreferences;
 
 public class MorraGame extends DirectedGame {
 	@Override
@@ -31,9 +33,9 @@ public class MorraGame extends DirectedGame {
 
 		// Load preferences for audio settings and start playing music
 
-		//GamePreferences.instance.load();
+		GamePreferences.instance.load();
 
-		//AudioManager.instance.play(Assets.instance.music.song01);
+		AudioManager.instance.play(Assets.instance.music.soundtrack);
 
 
 

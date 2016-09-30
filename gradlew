@@ -7,8 +7,8 @@
 ##############################################################################
 
 # Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
-DEFAULT_JVM_OPTS=""
-
+DEFAULT_JVM_OPTS="-Dhttp.proxyHost=localhost -Dhttp.proxyPort=8123"
+JAVA_HOME='/home/christian/opt/java-8'
 APP_NAME="Gradle"
 APP_BASE_NAME=`basename "$0"`
 
