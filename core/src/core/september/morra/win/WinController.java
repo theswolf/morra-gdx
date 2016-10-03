@@ -9,6 +9,7 @@ import com.badlogic.gdx.utils.Disposable;
 import core.september.morra.screens.DirectedGame;
 import core.september.morra.screens.GameScreen;
 import core.september.morra.screens.MenuScreen;
+import core.september.morra.screens.ScoreScreen;
 import core.september.morra.screens.transitions.ScreenTransition;
 import core.september.morra.screens.transitions.ScreenTransitionFlash;
 import core.september.morra.screens.transitions.ScreenTransitionSlide;
@@ -66,7 +67,7 @@ public class WinController extends InputAdapter implements Disposable {
                 game.setScreen(new GameScreen(game), ScreenTransitionFlash.init(0.5f));
             }
             else {
-                game.setScreen(new MenuScreen(game), ScreenTransitionSlide.init(0.75f, ScreenTransitionSlide.DOWN, false, Interpolation.bounceOut));
+                game.setScreen(new ScoreScreen(game), ScreenTransitionSlide.init(0.75f, ScreenTransitionSlide.DOWN, false, Interpolation.bounceOut));
             }
 
         }

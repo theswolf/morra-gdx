@@ -19,12 +19,16 @@ package core.september.morra.scoreboard;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Array;
 
 import core.september.morra.Constants;
 import core.september.morra.game.objects.GameLevelGraphics;
 import core.september.morra.game.objects.TouchWrapper;
 import core.september.morra.util.Assets;
+import core.september.morra.util.GameScore;
+import core.september.morra.util.Match;
 
 
 public class ScoreLevel extends GameLevelGraphics{
@@ -42,23 +46,18 @@ public class ScoreLevel extends GameLevelGraphics{
 	}
 
 
-
-
-    public void renderColorizedInfos(SpriteBatch batch) {
-        BitmapFont font = Assets.instance.font.defaultBig;
-
-        if(cpu+player == playerBound) {
-            font.setColor(Color.YELLOW);
-            font.draw(batch, String.valueOf(playerBound), Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT * 0.65f);
-
-        }
-
-        else {
-            font.setColor(Color.RED);
-            font.draw(batch, String.valueOf(cpuBound), (Constants.VIEWPORT_WIDTH / 8) * 7, Constants.VIEWPORT_HEIGHT * 0.65f);
-        }
-
+    protected void init () {
+        backGround = new Sprite(Assets.instance.background.region,
+                0,
+                (Assets.instance.background.region.getRegionHeight() - Constants.VIEWPORT_HEIGHT) / 2,
+                Constants.VIEWPORT_WIDTH,
+                Constants.VIEWPORT_HEIGHT
+        );
     }
+
+
+
+
 
 	public void update (float deltaTime) {
 
@@ -68,23 +67,33 @@ public class ScoreLevel extends GameLevelGraphics{
 
 
 	public void render (SpriteBatch batch) {
-		// Draw Mountains
-		backGround.draw(batch);
-        renderLowerHands(batch);
-        renderUpperHands(batch);
-        renderInfos(batch);
-	}
-
-    public void renderColorized(SpriteBatch batch) {
-        currentPlayer.touched.draw(batch);
-        currentCpu.touched.draw(batch);
-        renderColorizedInfos(batch);
+        // Draw Mountains
+        backGround.draw(batch);
     }
 
 
 
+    public void renderColorized(SpriteBatch batch) {
+        BitmapFont font = Assets.instance.font.defaultBig;
+
+        Array<Match> matches = GameScore.instance.matches;
+        int counter = 1;
+        for(Match match:matches) {
+            font.setColor(match.win ? Color.YELLOW : Color.RED);
+            font.draw(batch, String.format("Match n°%s : %s !!!",counter,match.win ? "won" : "lost"),
+                    Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT * 0.65f * counter);
+            counter++;
+
+        }
+        int level = 0;
+        for(Match match:matches) {
+            level += (match.win? 1: -1);
+        }
+        font.setColor(level>0 ? Color.YELLOW : Color.RED);
+        font.draw(batch, String.format("YOU %s !!!",counter,level>0 ? "WIN" : "LOOSE"),
+                Constants.VIEWPORT_WIDTH / 4, Constants.VIEWPORT_HEIGHT * 0.65f * matches.size+1);
 
 
 
-
+    }
 }

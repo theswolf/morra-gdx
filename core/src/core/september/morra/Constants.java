@@ -62,5 +62,5 @@ public class Constants {
     public static final float ACCEL_MAX_ANGLE_MAX_MOVEMENT = 20.0f;
     public static final String SCORE = "morragame.score";
     public static final String CLAP_SOUND = "sounds/clap.wav";
-    public static final String MUSIC = "music/auto-piano.mp3";
+    public static final String MUSIC = "music/autopiano.mp3";
 }

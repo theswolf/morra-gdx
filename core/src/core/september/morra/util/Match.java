@@ -12,6 +12,10 @@ public class Match {
         this.winned(won);
     }
 
+    public Match() {
+
+    }
+
     public void winned(boolean isWin) {
         win = isWin;
         loose = !isWin;

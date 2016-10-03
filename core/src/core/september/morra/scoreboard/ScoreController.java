@@ -45,12 +45,7 @@ public class ScoreController extends InputAdapter implements Disposable {
     public void update (float deltaTime) {
         duration += deltaTime;
         if(duration > 1f) {
-            if(GameScore.instance.hasNextRound()) {
-                game.setScreen(new GameScreen(game), ScreenTransitionFlash.init(0.5f));
-            }
-            else {
                 game.setScreen(new MenuScreen(game), ScreenTransitionSlide.init(0.75f, ScreenTransitionSlide.DOWN, false, Interpolation.bounceOut));
-            }
 
         }
         //Gdx.app.log(TAG,"WinController updating");

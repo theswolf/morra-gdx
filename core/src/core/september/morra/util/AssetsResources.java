@@ -42,6 +42,7 @@ public abstract class AssetsResources {
 
         public AssetMusic(AssetManager am) {
             soundtrack = am.get(Constants.MUSIC, Music.class);
+            soundtrack.setLooping(true);
         }
     }
 

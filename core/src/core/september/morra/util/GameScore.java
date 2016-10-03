@@ -47,6 +47,7 @@ public class GameScore {
         loose = prefs.getInteger("loose", 0);
         //String matches = json.toJson(person);
         matches  = getJson().fromJson(Array.class, prefs.getString("matches"));
+        if(matches == null) matches = new Array<Match>();
     }
 
     public void save () {
