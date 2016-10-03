@@ -10,6 +10,7 @@ import core.september.morra.screens.GameScreen;
 import core.september.morra.screens.MenuScreen;
 import core.september.morra.screens.transitions.ScreenTransition;
 import core.september.morra.screens.transitions.ScreenTransitionSlice;
+import core.september.morra.tests.TestScreen;
 import core.september.morra.util.Assets;
 import core.september.morra.util.AudioManager;
 import core.september.morra.util.GamePreferences;
@@ -43,7 +44,8 @@ public class MorraGame extends DirectedGame {
 
 		ScreenTransition transition = ScreenTransitionSlice.init(2, ScreenTransitionSlice.UP_DOWN, 10, Interpolation.pow5Out);
 
-		setScreen(new MenuScreen(this), transition);
+		//setScreen(new MenuScreen(this), transition);
+		setScreen(new TestScreen(this), transition);
 
 	}
 }

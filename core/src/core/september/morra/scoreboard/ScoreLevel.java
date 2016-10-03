@@ -17,6 +17,7 @@
 
 package core.september.morra.scoreboard;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -74,24 +75,34 @@ public class ScoreLevel extends GameLevelGraphics{
 
 
     public void renderColorized(SpriteBatch batch) {
-        BitmapFont font = Assets.instance.font.defaultBig;
+        BitmapFont font = Assets.instance.font.defaultNormal;
+        BitmapFont big = Assets.instance.font.defaultBig;
 
         Array<Match> matches = GameScore.instance.matches;
-        int counter = 1;
+        Gdx.app.log(TAG,String.format("There are %s matches",matches.size));
+        /*float counter = 0.1f*matches.size;
+        int label = 1;
         for(Match match:matches) {
             font.setColor(match.win ? Color.YELLOW : Color.RED);
-            font.draw(batch, String.format("Match n°%s : %s !!!",counter,match.win ? "won" : "lost"),
-                    Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT * 0.65f * counter);
-            counter++;
+            font.draw(batch, String.format("Match n°%s : %s !!!",label,match.win ? "won" : "lost"),
+                    Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT *  counter );
+            counter = counter-0.1f;
+            label ++;
 
-        }
+        }*/
         int level = 0;
+        int won = 0;
+        int lost = 0;
         for(Match match:matches) {
             level += (match.win? 1: -1);
+            if(match.win)
+                won+=1;
+            else
+                lost+=1;
         }
         font.setColor(level>0 ? Color.YELLOW : Color.RED);
-        font.draw(batch, String.format("YOU %s !!!",counter,level>0 ? "WIN" : "LOOSE"),
-                Constants.VIEWPORT_WIDTH / 4, Constants.VIEWPORT_HEIGHT * 0.65f * matches.size+1);
+        font.draw(batch, String.format("YOU %s %s matches of %s!!!", level>0 ? "WIN" : "LOOSE",level>0 ? won : lost,matches.size),
+                Constants.VIEWPORT_WIDTH / 16, Constants.VIEWPORT_HEIGHT / 2);
 
 
 

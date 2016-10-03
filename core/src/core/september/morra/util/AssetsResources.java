@@ -61,7 +61,7 @@ public abstract class AssetsResources {
 
     public class Fonts {
         //public final BitmapFont defaultSmall;
-        //public final BitmapFont defaultNormal;
+        public final BitmapFont defaultNormal;
         public final BitmapFont defaultBig;
 
         public Fonts() {
@@ -76,6 +76,16 @@ public abstract class AssetsResources {
 
 
             defaultBig = generator.generateFont(parameter);
+
+
+            FreeTypeFontGenerator.FreeTypeFontParameter parameternormal = new FreeTypeFontGenerator.FreeTypeFontParameter();
+            parameternormal.size = Constants.VIEWPORT_HEIGHT / 5;
+            parameternormal.borderColor = Color.BLACK;
+            parameternormal.borderWidth = 1;
+            parameternormal.characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!'()>?:";
+
+            defaultNormal = generator.generateFont(parameternormal);
+
             generator.dispose();
 
 

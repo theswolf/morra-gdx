@@ -1,0 +1,28 @@
+Per poter pubblicare la tua scheda dello store, devi fornire almeno due screenshot.
+
+JPEG o PNG a 24 bit (non alfa)
+Dimensioni minime: 320 px
+Dimensioni massime: 3840 px
+Le dimensioni massime dello screenshot non possono superare il doppio della lunghezza delle dimensioni minime.
+
+
+Per poter pubblicare la tua scheda dello store è obbligatoria un'icona ad alta risoluzione. L'icona ad alta risoluzione non sostituisce l'icona di avvio dell'app, ma dovrebbe essere una versione a risoluzione e fedeltà più elevate, nonché rispettare le stesse linee guida per la struttura.
+
+Requisiti
+PNG a 32 bit (con alfa)
+Dimensioni: 512 px x 512 px
+Dimensioni massime del file: 1024 kB
+
+
+L'immagine in primo piano è uno strumento efficace per mostrare le tue risorse creative e attirare gli utenti ed è obbligatoria per la visualizzazione in primo piano su Google Play.
+
+Requisiti
+JPEG o PNG a 24 bit (non alfa)
+Dimensioni: 1024 px x 500 px
+
+
+L'immagine promozionale viene utilizzata per le promozioni su versioni precedenti alla 4.0 del sistema operativo Android. Questa immagine non deve essere soggetta ad aggiornamento per la scheda dello store.
+
+Requisiti
+JPG o PNG a 24 bit (non alfa)
+Dimensioni: 180 px x 120 px

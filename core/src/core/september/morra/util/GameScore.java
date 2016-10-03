@@ -49,8 +49,9 @@ public class GameScore {
         loose = prefs.getInteger("loose", 0);
         totalwins = prefs.getInteger("totalwins",0);
         totalloose = prefs.getInteger("totalloose", 0);
-        //String matches = json.toJson(person);
-        matches  = getJson().fromJson(Array.class, prefs.getString("matches"));
+        String _matches = prefs.getString("matches","[]");
+        matches  = getJson().fromJson(Array.class, _matches);
+        Gdx.app.log(TAG,String.format("Loaded %s matches",_matches));
         if(matches == null) matches = new Array<Match>();
     }
 
@@ -60,7 +61,9 @@ public class GameScore {
         prefs.putInteger("loose",loose);
         prefs.putInteger("totalwins",totalwins);
         prefs.putInteger("totalloose",totalloose);
-        prefs.putString("matches",getJson().toJson(matches));
+        String _matches = getJson().toJson(matches);
+        prefs.putString("matches",_matches);
+        Gdx.app.log(TAG,String.format("Stored %s matches",_matches));
         prefs.flush();
 
     }
