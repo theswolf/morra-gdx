@@ -22,6 +22,8 @@ public class GameScore {
     public int winInARow;
     public int wins;
     public int loose;
+    public int totalwins;
+    public int totalloose;
     public int round;
     public Array<Match> matches = new Array<Match>();
 
@@ -45,6 +47,8 @@ public class GameScore {
         winInARow = prefs.getInteger("winInARow",0);
         wins = prefs.getInteger("wins",0);
         loose = prefs.getInteger("loose", 0);
+        totalwins = prefs.getInteger("totalwins",0);
+        totalloose = prefs.getInteger("totalloose", 0);
         //String matches = json.toJson(person);
         matches  = getJson().fromJson(Array.class, prefs.getString("matches"));
         if(matches == null) matches = new Array<Match>();
@@ -54,6 +58,8 @@ public class GameScore {
         prefs.putInteger("winInARow",winInARow);
         prefs.putInteger("wins",wins);
         prefs.putInteger("loose",loose);
+        prefs.putInteger("totalwins",totalwins);
+        prefs.putInteger("totalloose",totalloose);
         prefs.putString("matches",getJson().toJson(matches));
         prefs.flush();
 
@@ -63,6 +69,7 @@ public class GameScore {
         load();
         winInARow = winInARow+1;
         wins = wins+1;
+        totalwins +=1;
         matches.add(new Match(true));
         save();
     }
@@ -71,12 +78,15 @@ public class GameScore {
         load();
         winInARow = 0;
         loose = loose+1;
+        totalloose+=1;
         matches.add(new Match(false));
         save();
     }
 
     public void resetMatches() {
         load();
+        wins=0;
+        loose=0;
         matches = new Array<Match>();
         save();
     }
