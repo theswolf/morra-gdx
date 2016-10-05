@@ -26,8 +26,12 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.ClickListener;
+import com.badlogic.gdx.scenes.scene2d.utils.Drawable;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import javax.swing.WindowConstants;
 
@@ -62,7 +66,7 @@ public class MenuScreen extends AbstractGameScreen {
 
     public MenuScreen(DirectedGame game) {
         super(game);
-
+        GameScore.instance.resetMatches();
 
     }
 
@@ -72,21 +76,33 @@ public class MenuScreen extends AbstractGameScreen {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         stage.act(deltaTime);
-        Batch batch = stage.getBatch();
-        Camera camera = stage.getCamera();
-        renderBackground(batch, camera);
+
+
+        //renderBackground(batch, stage.getCamera());
+        stage.getBatch().setProjectionMatrix(stage.getCamera().combined);
+        stage.getBatch().begin();
+        stage.getBatch().setShader(shaderMonochrome);
+        shaderMonochrome.setUniformf("u_amount", 1.0f);
+        /*stage.getBatch().draw(backGround,
+                Constants.VIEWPORT_WIDTH/2,
+                Constants.VIEWPORT_HEIGHT/2
+                ,Constants.VIEWPORT_WIDTH,Constants.VIEWPORT_HEIGHT);
+        backGround.draw(stage.getBatch());*/
+        stage.getBatch().setShader(null);
+        stage.getBatch().end();
         stage.draw();
 
         //Table.drawDebug(stage);
     }
 
-    private void renderBackground(Batch batch, Camera camera) {
+    private void _renderBackground(Batch batch, Camera camera) {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 		/*if (GamePreferences.instance.useMonochromeShader) {
 			batch.setShader(shaderMonochrome);
 			shaderMonochrome.setUniformf("u_amount", 1.0f);
 		}*/
+        //viewport.
         batch.setShader(shaderMonochrome);
         shaderMonochrome.setUniformf("u_amount", 1.0f);
         backGround.draw(batch);
@@ -96,12 +112,12 @@ public class MenuScreen extends AbstractGameScreen {
 
     @Override
     public void resize(int width, int height) {
-        stage.getViewport().update(width, height, true);
+        stage.getViewport().update(width, height, false);
     }
 
     @Override
     public void show() {
-        stage = new Stage(new StretchViewport(Constants.VIEWPORT_WIDTH,
+        stage = new Stage(new FitViewport(Constants.VIEWPORT_WIDTH,
                 Constants.VIEWPORT_HEIGHT));
        //batch = new SpriteBatch();
         skin = new Skin(Gdx.files.internal("skins/uiskin.json"));
@@ -109,10 +125,13 @@ public class MenuScreen extends AbstractGameScreen {
 
         backGround = new Sprite(Assets.instance.background.region,
                 0,
-                (Assets.instance.background.region.getRegionHeight() - Constants.VIEWPORT_HEIGHT)/2,
+                0,
                 Constants.VIEWPORT_WIDTH,
                 Constants.VIEWPORT_HEIGHT
         );
+
+        /*backGround.setPosition(Constants.VIEWPORT_WIDTH/2,
+                0);*/
 
         shaderMonochrome = new ShaderProgram(Gdx.files.internal(Constants.shaderMonochromeVertex),
                 Gdx.files.internal(Constants.shaderMonochromeFragment));
@@ -122,7 +141,8 @@ public class MenuScreen extends AbstractGameScreen {
         }
 
 
-        //stage.addActor(button);
+
+
 
         winOptions = buildOptionsWindowLayer(skin);
         stage.addActor(winOptions);
@@ -132,6 +152,7 @@ public class MenuScreen extends AbstractGameScreen {
         stage.addActor(mainMenuTable);
         addToTable(mainMenuTable, playButton());
         addToTable(mainMenuTable, optionButton());
+        addToTable(mainMenuTable, scoreButton());
 
         levelChooseTable = new Table();
         levelChooseTable.setFillParent(true);
@@ -145,6 +166,9 @@ public class MenuScreen extends AbstractGameScreen {
         showFloatingActor(mainMenuTable, true, false);
         showFloatingActor(levelChooseTable, false, false);
         showFloatingActor(winOptions,false,false);
+
+        stage.getViewport().update(Constants.VIEWPORT_WIDTH,
+                Constants.VIEWPORT_HEIGHT);
 
        // Gdx.input.setInputProcessor(stage); rebuildStage();
     }
@@ -189,6 +213,26 @@ public class MenuScreen extends AbstractGameScreen {
                 loadSettings();
                 showFloatingActor(mainMenuTable,false,true);
                 showFloatingActor(winOptions,true,true);
+            }
+        });
+
+        return button;
+
+    }
+
+
+    private TextButton scoreButton() {
+        final TextButton button = new TextButton("Score", skin, "default");
+
+        button.setWidth(uiWidth);
+        button.setHeight(20f);
+        button.setColor(Color.RED);
+        button.setPosition(Gdx.graphics.getWidth() / 2 - 100f, Gdx.graphics.getHeight() / 2 - 10f);
+
+        button.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                MenuScreen.this.game.playServices.showScore();
             }
         });
 
@@ -303,7 +347,13 @@ public class MenuScreen extends AbstractGameScreen {
     private Window buildOptionsWindowLayer(Skin skin) {
         winOptions = new Window("Options", skin);
         // + Audio Settings: Sound/Music CheckBox and Volume Slider
+
+
+
         winOptions.add(buildOptWinAudioSettings(skin)).row();
+
+
+
         // + Character Skin: Selection Box (White, Gray, Brown)
         //winOptions.add(buildOptWinSkinSelection()).row();
         // + Debug: Show FPS Counter

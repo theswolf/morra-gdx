@@ -1,0 +1,3 @@
+TASK core.september.morra id=2105
+  ACTIVITY core.september.morra/.AndroidLauncher 3be0829 pid=16133
+    Failure while dumping the activity: java.io.IOException: Timeout

@@ -66,6 +66,7 @@ public class GamePreferences {
 		prefs.putBoolean("useMonochromeShader", useMonochromeShader);
 		prefs.putInteger("gameLevel",gameLevel);
 		prefs.flush();
+		AudioManager.instance.onSettingsUpdated();
 	}
 
 }

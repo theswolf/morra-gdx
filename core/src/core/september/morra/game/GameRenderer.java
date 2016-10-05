@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import core.september.morra.Constants;
 
@@ -13,7 +15,7 @@ import core.september.morra.Constants;
 public class GameRenderer implements Disposable {
 
     private OrthographicCamera camera;
-    private ExtendViewport viewport;
+    private Viewport viewport;
     private GameController controller;
     private SpriteBatch batch;
 
@@ -25,7 +27,7 @@ public class GameRenderer implements Disposable {
     private void init() {
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new ExtendViewport(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, camera);
+        viewport = new FitViewport(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, camera);
         viewport.update(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT,true);
     }
 

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.FrameBuffer;
 
 import core.september.morra.screens.transitions.ScreenTransition;
+import core.september.morra.util.PlayServices;
 
 /**
  * Created by christian on 21/03/16.
@@ -21,6 +22,11 @@ public abstract class DirectedGame implements ApplicationListener {
     private SpriteBatch batch;
     private float t;
     private ScreenTransition screenTransition;
+    public static PlayServices playServices;
+
+    public DirectedGame(PlayServices playServices) {
+        this.playServices = playServices;
+    }
 
     public void setScreen (AbstractGameScreen screen) {
         setScreen(screen, null);

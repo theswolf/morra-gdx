@@ -1,0 +1,255 @@
+CURRENT STATS:
+System memory usage:
+  SOff/Norm: 4 samples:
+    Cached: 49MB min, 138MB avg, 210MB max
+    Free: 65MB min, 98MB avg, 140MB max
+    ZRam: 96MB min, 128MB avg, 151MB max
+    Kernel: 257MB min, 264MB avg, 272MB max
+    Native: 78MB min, 86MB avg, 103MB max
+  SOn /Norm: 3 samples:
+    Cached: 92MB min, 124MB avg, 170MB max
+    Free: 91MB min, 139MB avg, 169MB max
+    ZRam: 100MB min, 119MB avg, 151MB max
+    Kernel: 252MB min, 271MB avg, 286MB max
+    Native: 81MB min, 88MB avg, 101MB max
+
+Per-Package Stats:
+  * core.september.morra / u0a174 / v1:
+      * core.september.morra / u0a174 / v1:
+               TOTAL: 0,09%
+                 Top: 0,09%
+            (Cached): 0,07%
+  * core.september.morra / u0a175 / v1:
+      * core.september.morra / u0a175 / v1:
+               TOTAL: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+                 Top: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+            (Cached): 0,10%
+  * core.september.morra / u0a176 / v1:
+      * core.september.morra / u0a176 / v1:
+               TOTAL: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+                 Top: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+            (Cached): 4,3% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+
+Summary:
+  * core.september.morra / u0a175 / v1:
+           TOTAL: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+             Top: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+        (Cached): 0,10%
+  * core.september.morra / u0a176 / v1:
+           TOTAL: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+             Top: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+        (Cached): 4,3% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+  * core.september.morra / u0a174 / v1:
+           TOTAL: 0,09%
+             Top: 0,09%
+        (Cached): 0,07%
+
+Run time Stats:
+  SOff/Norm: +51m3s974ms (running)
+       Mod : +8m33s146ms
+  SOn /Norm: +6m12s455ms
+       Mod : +1m45s828ms
+      TOTAL: +1h7m35s403ms
+
+Memory usage:
+  Kernel : 265MB (49 samples)
+  Native : 86MB (49 samples)
+  Persist: 539MB (474 samples)
+  Top    : 330MB (328 samples)
+  ImpFg  : 380MB (1158 samples)
+  ImpBg  : 35MB (260 samples)
+  Service: 283MB (1594 samples)
+  Receivr: 348KB (781 samples)
+  Home   : 125MB (36 samples)
+  LastAct: 24MB (183 samples)
+  CchAct : 244MB (196 samples)
+  CchCAct: 38MB (64 samples)
+  CchEmty: 120MB (560 samples)
+  Cached : 135MB (49 samples)
+  Free   : 104MB (49 samples)
+  Z-Ram  : 126MB (49 samples)
+  TOTAL  : 2,8GB
+  ServRst: 2,2MB (378 samples)
+
+          Start time: 2016-10-04 14:31:08
+  Total elapsed time: +1h43m9s171ms (partial) libart.so
+
+AGGREGATED OVER LAST 24 HOURS:
+System memory usage:
+  SOff/Norm: 16 samples:
+    Cached: 0,00 min, 75MB avg, 210MB max
+    Free: 43MB min, 80MB avg, 140MB max
+    ZRam: 6,4MB min, 137MB avg, 156MB max
+    Kernel: 257MB min, 278MB avg, 294MB max
+    Native: 74MB min, 85MB avg, 121MB max
+       Mod : 8 samples:
+    Cached: 0,00 min, 20MB avg, 99MB max
+    Free: 67MB min, 114MB avg, 218MB max
+    ZRam: 144MB min, 154MB avg, 156MB max
+    Kernel: 267MB min, 293MB avg, 320MB max
+    Native: 78MB min, 83MB avg, 86MB max
+       Low : 3 samples:
+    Cached: 0,00 min, 46MB avg, 135MB max
+    Free: 72MB min, 115MB avg, 159MB max
+    ZRam: 155MB min, 156MB avg, 156MB max
+    Kernel: 273MB min, 279MB avg, 285MB max
+    Native: 83MB min, 84MB avg, 85MB max
+  SOn /Norm: 30 samples:
+    Cached: 0,00 min, 70MB avg, 299MB max
+    Free: 15MB min, 111MB avg, 348MB max
+    ZRam: 14MB min, 141MB avg, 156MB max
+    Kernel: 242MB min, 285MB avg, 331MB max
+    Native: 76MB min, 83MB avg, 101MB max
+       Mod : 27 samples:
+    Cached: 0,00 min, 3,2MB avg, 83MB max
+    Free: 64MB min, 114MB avg, 330MB max
+    ZRam: 108MB min, 151MB avg, 156MB max
+    Kernel: 270MB min, 288MB avg, 328MB max
+    Native: 73MB min, 83MB avg, 89MB max
+       Low : 16 samples:
+    Cached: 0,00 min, 3,6MB avg, 135MB max
+    Free: 65MB min, 133MB avg, 309MB max
+    ZRam: 75MB min, 150MB avg, 156MB max
+    Kernel: 272MB min, 287MB avg, 332MB max
+    Native: 78MB min, 84MB avg, 87MB max
+
+Per-Package Stats:
+  * core.september.morra / u0a174 / v1:
+      * core.september.morra / u0a174 / v1:
+               TOTAL: 0,01%
+                 Top: 0,01%
+            (Cached): 0,01%
+  * core.september.morra / u0a175 / v1:
+      * core.september.morra / u0a175 / v1:
+               TOTAL: 1,7% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+                 Top: 1,7% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+            (Cached): 0,01%
+  * core.september.morra / u0a176 / v1:
+      * core.september.morra / u0a176 / v1:
+               TOTAL: 0,54% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+                 Top: 0,54% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+            (Cached): 0,36% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+
+Summary:
+  * core.september.morra / u0a175 / v1:
+           TOTAL: 1,7% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+             Top: 1,7% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+        (Cached): 0,01%
+  * core.september.morra / u0a176 / v1:
+           TOTAL: 0,54% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+             Top: 0,54% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+        (Cached): 0,36% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+  * core.september.morra / u0a174 / v1:
+           TOTAL: 0,01%
+             Top: 0,01%
+        (Cached): 0,01%
+
+Run time Stats:
+  SOff/Norm: +6h56m22s401ms
+       Mod : +1h22m57s572ms
+       Low : +8m47s146ms
+       Crit: +1m24s750ms
+  SOn /Norm: +2h10m2s874ms
+       Mod : +1h39m16s399ms
+       Low : +54m18s889ms
+       Crit: +5m52s192ms
+      TOTAL: +13h19m2s223ms
+
+Memory usage:
+  Kernel : 283MB (300 samples)
+  Native : 84MB (300 samples)
+  Persist: 535MB (6988 samples)
+  Top    : 386MB (9987 samples)
+  ImpFg  : 271MB (15416 samples)
+  ImpBg  : 64MB (11393 samples)
+  Service: 378MB (31911 samples)
+  Receivr: 472KB (25885 samples)
+  Home   : 89MB (356 samples)
+  LastAct: 49MB (3336 samples)
+  CchAct : 204MB (2018 samples)
+  CchCAct: 103MB (1804 samples)
+  CchEmty: 132MB (12922 samples)
+  Cached : 54MB (300 samples)
+  Free   : 97MB (300 samples)
+  Z-Ram  : 142MB (300 samples)
+  TOTAL  : 2,8GB
+  ServRst: 2,4MB (25830 samples)
+
+          Start time: 2016-10-03 07:32:44
+  Total elapsed time: +1d1h13m26s244ms (partial) libart.so
+
+AGGREGATED OVER LAST 3 HOURS:
+System memory usage:
+  SOff/Norm: 4 samples:
+    Cached: 49MB min, 138MB avg, 210MB max
+    Free: 65MB min, 98MB avg, 140MB max
+    ZRam: 96MB min, 128MB avg, 151MB max
+    Kernel: 257MB min, 264MB avg, 272MB max
+    Native: 78MB min, 86MB avg, 103MB max
+  SOn /Norm: 3 samples:
+    Cached: 92MB min, 124MB avg, 170MB max
+    Free: 91MB min, 139MB avg, 169MB max
+    ZRam: 100MB min, 119MB avg, 151MB max
+    Kernel: 252MB min, 271MB avg, 286MB max
+    Native: 81MB min, 88MB avg, 101MB max
+
+Per-Package Stats:
+  * core.september.morra / u0a174 / v1:
+      * core.september.morra / u0a174 / v1:
+               TOTAL: 0,09%
+                 Top: 0,09%
+            (Cached): 0,07%
+  * core.september.morra / u0a175 / v1:
+      * core.september.morra / u0a175 / v1:
+               TOTAL: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+                 Top: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+            (Cached): 0,10%
+  * core.september.morra / u0a176 / v1:
+      * core.september.morra / u0a176 / v1:
+               TOTAL: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+                 Top: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+            (Cached): 4,3% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+
+Summary:
+  * core.september.morra / u0a175 / v1:
+           TOTAL: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+             Top: 20% (23MB-23MB-23MB/20MB-20MB-20MB over 1)
+        (Cached): 0,10%
+  * core.september.morra / u0a176 / v1:
+           TOTAL: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+             Top: 6,4% (15MB-27MB-60MB/13MB-25MB-57MB over 5)
+        (Cached): 4,3% (5,2MB-5,2MB-5,3MB/4,3MB-4,3MB-4,4MB over 2)
+  * core.september.morra / u0a174 / v1:
+           TOTAL: 0,09%
+             Top: 0,09%
+        (Cached): 0,07%
+
+Run time Stats:
+  SOff/Norm: +51m4s224ms
+       Mod : +8m33s146ms
+  SOn /Norm: +6m12s455ms
+       Mod : +1m45s828ms
+      TOTAL: +1h7m35s653ms
+
+Memory usage:
+  Kernel : 265MB (49 samples)
+  Native : 86MB (49 samples)
+  Persist: 539MB (474 samples)
+  Top    : 330MB (328 samples)
+  ImpFg  : 380MB (1158 samples)
+  ImpBg  : 35MB (260 samples)
+  Service: 283MB (1594 samples)
+  Receivr: 348KB (781 samples)
+  Home   : 125MB (36 samples)
+  LastAct: 24MB (183 samples)
+  CchAct : 244MB (196 samples)
+  CchCAct: 38MB (64 samples)
+  CchEmty: 120MB (560 samples)
+  Cached : 135MB (49 samples)
+  Free   : 104MB (49 samples)
+  Z-Ram  : 126MB (49 samples)
+  TOTAL  : 2,8GB
+  ServRst: 2,2MB (378 samples)
+
+          Start time: 2016-10-04 14:31:08
+  Total elapsed time: +1h43m9s395ms (partial) libart.so

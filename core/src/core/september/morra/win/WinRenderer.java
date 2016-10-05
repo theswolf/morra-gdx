@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.badlogic.gdx.utils.Disposable;
 import com.badlogic.gdx.utils.GdxRuntimeException;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
 
 import core.september.morra.Constants;
 
@@ -16,7 +18,7 @@ import core.september.morra.Constants;
 public class WinRenderer implements Disposable {
 
     private OrthographicCamera camera;
-    private ExtendViewport viewport;
+    private Viewport viewport;
     private WinController controller;
     private SpriteBatch batch;
     private SpriteBatch colorbatch;
@@ -31,7 +33,7 @@ public class WinRenderer implements Disposable {
         batch = new SpriteBatch();
         colorbatch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new ExtendViewport(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, camera);
+        viewport = new FitViewport(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, camera);
         viewport.update(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT,true);
         shaderMonochrome = new ShaderProgram(Gdx.files.internal(Constants.shaderMonochromeVertex),
                 Gdx.files.internal(Constants.shaderMonochromeFragment));

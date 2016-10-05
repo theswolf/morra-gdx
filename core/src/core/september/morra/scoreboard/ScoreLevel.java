@@ -80,16 +80,9 @@ public class ScoreLevel extends GameLevelGraphics{
 
         Array<Match> matches = GameScore.instance.matches;
         Gdx.app.log(TAG,String.format("There are %s matches",matches.size));
-        /*float counter = 0.1f*matches.size;
-        int label = 1;
-        for(Match match:matches) {
-            font.setColor(match.win ? Color.YELLOW : Color.RED);
-            font.draw(batch, String.format("Match n°%s : %s !!!",label,match.win ? "won" : "lost"),
-                    Constants.VIEWPORT_WIDTH / 8, Constants.VIEWPORT_HEIGHT *  counter );
-            counter = counter-0.1f;
-            label ++;
 
-        }*/
+        if(matches.size == 0) return;
+
         int level = 0;
         int won = 0;
         int lost = 0;

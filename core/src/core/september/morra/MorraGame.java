@@ -14,10 +14,16 @@ import core.september.morra.tests.TestScreen;
 import core.september.morra.util.Assets;
 import core.september.morra.util.AudioManager;
 import core.september.morra.util.GamePreferences;
+import core.september.morra.util.PlayServices;
 
 public class MorraGame extends DirectedGame {
-	@Override
 
+
+	public MorraGame(PlayServices playServices) {
+		super(playServices);
+	}
+
+	@Override
 	public void create () {
 
 		// Set Libgdx log level
@@ -44,8 +50,8 @@ public class MorraGame extends DirectedGame {
 
 		ScreenTransition transition = ScreenTransitionSlice.init(2, ScreenTransitionSlice.UP_DOWN, 10, Interpolation.pow5Out);
 
-		//setScreen(new MenuScreen(this), transition);
-		setScreen(new TestScreen(this), transition);
+		setScreen(new MenuScreen(this), transition);
+		//setScreen(new TestScreen(this), transition);
 
 	}
 }

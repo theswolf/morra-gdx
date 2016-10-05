@@ -1,6 +1,6 @@
 android {
-    buildToolsVersion "24.0.2"
-    compileSdkVersion 24
+    buildToolsVersion "21.0.2"
+    compileSdkVersion 21
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -16,7 +16,7 @@ android {
     }
     defaultConfig {
         applicationId "core.september.morra"
-        minSdkVersion 8
+        minSdkVersion 15
         targetSdkVersion 24
     }
 }

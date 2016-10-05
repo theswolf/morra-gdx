@@ -93,6 +93,7 @@ public abstract class AssetsResources {
 
         public void dispose() {
             defaultBig.dispose();
+            defaultNormal.dispose();
         }
     }
 

@@ -1,0 +1,40 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        ef71824 core.september.morra/.AndroidLauncher
+
+Key Set Manager:
+  [core.september.morra]
+      Signing KeySets: 93
+
+Packages:
+  Package [core.september.morra] (9010432):
+    userId=10176
+    pkg=Package{8686f8d core.september.morra}
+    codePath=/data/app/core.september.morra-1
+    resourcePath=/data/app/core.september.morra-1
+    legacyNativeLibraryDir=/data/app/core.september.morra-1/lib
+    primaryCpuAbi=arm64-v8a
+    secondaryCpuAbi=null
+    versionCode=1 targetSdk=24
+    versionName=1.0
+    splits=[base]
+    applicationInfo=ApplicationInfo{a82a542 core.september.morra}
+    flags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    dataDir=/data/user/0/core.september.morra
+    supportsScreens=[small, medium, large, xlarge, resizeable, anyDensity]
+    timeStamp=2016-10-04 16:08:41
+    firstInstallTime=2016-10-04 15:32:59
+    lastUpdateTime=2016-10-04 16:08:42
+    signatures=PackageSignatures{3ad739 [b06a953]}
+    installPermissionsFixed=true installStatus=1
+    pkgFlags=[ DEBUGGABLE HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    requested permissions:
+      android.permission.INTERNET
+      android.permission.ACCESS_NETWORK_STATE
+    install permissions:
+      android.permission.INTERNET: granted=true
+      android.permission.ACCESS_NETWORK_STATE: granted=true
+    User 0:  installed=true hidden=false stopped=false notLaunched=false enabled=0
+      gids=[3003]
+      runtime permissions:
