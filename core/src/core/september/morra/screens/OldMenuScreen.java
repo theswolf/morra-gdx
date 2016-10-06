@@ -9,7 +9,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.math.Interpolation;
 import com.badlogic.gdx.scenes.scene2d.Actor;
-import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
@@ -43,9 +42,9 @@ import static com.badlogic.gdx.scenes.scene2d.actions.Actions.touchable;
 /**
  * Created by christian on 24/03/16.
  */
-public class MenuScreen extends AbstractGameScreen {
+public class OldMenuScreen extends AbstractGameScreen {
 
-    private static final String TAG = MenuScreen.class.getName();
+    private static final String TAG = OldMenuScreen.class.getName();
 
     private Stage stage;
     private Skin uiSkin;
@@ -62,7 +61,7 @@ public class MenuScreen extends AbstractGameScreen {
     private Viewport viewport;
 
 
-    public MenuScreen(DirectedGame game) {
+    public OldMenuScreen(DirectedGame game) {
         super(game);
         GameScore.instance.resetMatches();
         init();
@@ -138,57 +137,37 @@ public class MenuScreen extends AbstractGameScreen {
 
     private Table buildLevelChooseLayer() {
         levelChoose = new Table();
-
         levelChoose.center().center();
-        for(int i = 0; i<= 3 ; i++) {
-            addToLayer(levelChoose,levelButton(i));
-        }
-
+        levelChoose.addActor(levelButton(0));
+        levelChoose.row();
+        levelChoose.addActor(levelButton(1));
+        levelChoose.row();
+        levelChoose.addActor(levelButton(2));
+        levelChoose.row();
+        levelChoose.addActor(levelButton(3));
+        levelChoose.row();
 
         return levelChoose;
-    }
-
-    private Button buildButton(String text, EventListener listener) {
-        Button button = new TextButton(text, uiSkin, "default");
-        button.setColor(Color.RED);
-
-        ((TextButton)button).getLabel().setFontScale(2f);
-        //button.setFillParent(true);
-        //button.setWidth(Constants.VIEWPORT_WIDTH/3);
-        //button.setHeight(Constants.VIEWPORT_HEIGHT/5);
-        //button.setScale(3.0f);
-        //button.padBottom(30.0f);
-        button.addListener(listener);
-
-        return button;
-    }
-
-    private void addToLayer(Table layer, Actor add) {
-        layer.add(add)
-                .height(Constants.VIEWPORT_HEIGHT / 5)
-                .width(Constants.VIEWPORT_WIDTH /3)
-                .row();
-
     }
 
     private Table buildControlsLayer() {
         final Table layer = new Table();
         layer.center().center();
         // + Play Button
-
-        Button btnMenuPlay = buildButton("New Game",new ChangeListener() {
+        Button btnMenuPlay = new TextButton("New Game", uiSkin, "default");
+        layer.add(btnMenuPlay);
+        btnMenuPlay.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 showFloatingActor(layerControls, false, true);
                 showFloatingActor(levelChoose, true, true);
             }
         });
-
-        addToLayer(layer,btnMenuPlay);
-
-
+        layer.row();
         // + Options Button
-        Button btnMenuOptions = buildButton("Game Options",new ChangeListener() {
+        Button btnMenuOptions = new TextButton("Game options", uiSkin, "default");
+        layer.add(btnMenuOptions);
+        btnMenuOptions.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 loadSettings();
@@ -196,16 +175,18 @@ public class MenuScreen extends AbstractGameScreen {
                 showFloatingActor(layerOptionsWindow,true,true);
             }
         });
-        addToLayer(layer,btnMenuOptions);
 
+        layer.row();
 
-        Button btnMenuOptionsScore = buildButton("Score",new ChangeListener() {
+        Button btnMenuOptionsScore = new TextButton("Score", uiSkin, "default");
+        layer.add(btnMenuOptionsScore);
+
+        btnMenuOptionsScore.addListener(new ClickListener() {
             @Override
-            public void changed(ChangeEvent event, Actor actor) {
-                MenuScreen.this.game.playServices.showScore();
+            public void clicked(InputEvent event, float x, float y) {
+                OldMenuScreen.this.game.playServices.showScore();
             }
         });
-        addToLayer(layer,btnMenuOptionsScore);
 
         return layer;
     }
@@ -242,9 +223,16 @@ public class MenuScreen extends AbstractGameScreen {
                 break;
         }
 
-        //Button button = new TextButton(s_level.toUpperCase(), uiSkin, "default");
+        Button button = new TextButton(s_level.toUpperCase(), uiSkin, "default");
 
-        Button button = buildButton(s_level.toUpperCase(),new ClickListener() {
+        //button.setWidth(uiWidth);
+        //button.setHeight(20f);
+        button.setColor(Color.RED);
+        //button.setPosition(Gdx.graphics.getWidth() / 2 - 100f, Gdx.graphics.getHeight() / 2 - 10f);
+
+        //button.getStyle().font = Assets.instance.font.defaultBig;
+
+        button.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //button.setText("You clicked the button");
@@ -257,8 +245,6 @@ public class MenuScreen extends AbstractGameScreen {
                 //showFloatingActor(levelChooseTable, false, true);
             }
         });
-
-
 
         return button;
 
@@ -281,7 +267,34 @@ public class MenuScreen extends AbstractGameScreen {
         //skinLibgdx.dispose();
     }
 
+    /*private void showMenuButtons(boolean visible) {
+        float moveDuration = 1.0f;
+        Interpolation moveEasing = Interpolation.swing;
+        float delayOptionsButton = 0.25f;
 
+        float moveX = visible ? 0 : Constants.VIEWPORT_WIDTH*2;
+        float moveY = 0 * (visible ? -1 : 1);
+        final Touchable touchEnabled = visible ? Touchable.enabled
+                : Touchable.disabled;
+        //btnMenuPlay.addAction(moveBy(moveX, moveY, moveDuration, moveEasing));
+        //btnMenuOptions.addAction(sequence(Actions.delay(delayOptionsButton),
+        //        moveBy(moveX, moveY, moveDuration, moveEasing)));
+
+        mainMenuTable.addAction(sequence(Actions.delay(delayOptionsButton),
+                moveBy(moveX, moveY, moveDuration, moveEasing)));
+
+        SequenceAction seq = Actions.sequence();
+        if (visible)
+            seq.addAction(delay(delayOptionsButton + moveDuration));
+        seq.addAction(run(new Runnable() {
+            public void run() {
+                //btnMenuPlay.setTouchable(touchEnabled);
+                //btnMenuOptions.setTouchable(touchEnabled);
+                mainMenuTable.setTouchable(touchEnabled);
+            }
+        }));
+        stage.addAction(seq);
+    }*/
 
 
 
@@ -304,23 +317,17 @@ public class MenuScreen extends AbstractGameScreen {
         //Table layer = new Table();
         Window winOptions = new Window("Options", uiSkin);
         // + Audio Settings: Sound/Music CheckBox and Volume Slider
-        winOptions.add(buildOptWinAudioSettings())
-                //.width(Constants.VIEWPORT_WIDTH/3)
-               // .height(Constants.VIEWPORT_HEIGHT/3)
-                .row();
+        winOptions.add(buildOptWinAudioSettings()).row();
         // + Character Skin: Selection Box (White, Gray, Brown)
         //winOptions.add(buildOptWinSkinSelection()).row();
         // + Debug: Show FPS Counter
         //winOptions.add(buildOptWinDebug()).row();
         // + Separator and Buttons (Save, Cancel)
-        winOptions.add(buildOptWinButtons())
-               // .width(Constants.VIEWPORT_WIDTH/2)
-               // .height(Constants.VIEWPORT_HEIGHT/3)
-                .pad(10, 0, 10, 0);
+        winOptions.add(buildOptWinButtons()).pad(10, 0, 10, 0);
         // Make options window slightly transparent
         winOptions.setColor(1, 1, 1, 0.8f);
         // Hide options window by default
-        winOptions.setVisible(true);
+        winOptions.setVisible(false);
 
         // Let TableLayout recalculate widget sizes and positions
         winOptions.pack();

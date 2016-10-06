@@ -22,6 +22,7 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
     public static final Assets instance = new Assets();
     private AssetManager assetManager;
 
+    public TextureAtlas atlas;
 
 
 
@@ -52,7 +53,7 @@ public class Assets extends AssetsResources implements Disposable, AssetErrorLis
             Gdx.app.debug(TAG, "asset: " + a);
         }
 
-        TextureAtlas atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
+        atlas = assetManager.get(Constants.TEXTURE_ATLAS_OBJECTS);
 
         // enable texture filtering for pixel smoothing
         for (Texture t : atlas.getTextures()) {
