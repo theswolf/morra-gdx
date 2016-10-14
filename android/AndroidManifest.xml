@@ -8,7 +8,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/ic_launcher_morra_svg"
         android:label="@string/app_name"
         android:theme="@style/GdxTheme"
         >
@@ -28,9 +28,13 @@
         <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="@string/app_id" />
         <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <activity android:name="com.google.android.gms.ads.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
 
 </manifest>

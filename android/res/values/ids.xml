@@ -6,4 +6,5 @@ Save this file as res/values/games-ids.xml in your project.
 <resources>
     <string name="app_id">662391243709</string>
     <string name="leaderboard_best_player">CgkIvYfhzKMTEAIQAQ</string>
+    <item name="adviewId" type="id"/>
 </resources>

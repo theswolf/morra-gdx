@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "480374677989",
+    "firebase_url": "https://admob-app-id-6901199062.firebaseio.com",
+    "project_id": "admob-app-id-6901199062",
+    "storage_bucket": "admob-app-id-6901199062.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480374677989:android:9cd5bdd6b48591b9",
+        "android_client_info": {
+          "package_name": "core.september.morra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "480374677989-fpu3tuq3g77ol1fm7rk5kmr3bgj13c9a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAp_h3FXwEWtyNByqJTxHz1y1BKi0VCV8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
