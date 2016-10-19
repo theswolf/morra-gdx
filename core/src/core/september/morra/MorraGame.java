@@ -50,7 +50,7 @@ public class MorraGame extends DirectedGame {
 
 		ScreenTransition transition = ScreenTransitionSlice.init(2, ScreenTransitionSlice.UP_DOWN, 10, Interpolation.pow5Out);
 
-		setScreen(new MenuScreen(this), transition);
+		setScreen(new MenuScreen(this), null);
 		//setScreen(new TestScreen(this), transition);
 
 	}

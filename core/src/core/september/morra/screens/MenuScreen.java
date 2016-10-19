@@ -64,7 +64,7 @@ public class MenuScreen extends AbstractGameScreen {
 
     public MenuScreen(DirectedGame game) {
         super(game);
-        GameScore.instance.resetMatches();
+
         init();
     }
 
@@ -229,16 +229,16 @@ public class MenuScreen extends AbstractGameScreen {
         String s_level=null;
         switch (level) {
             case 0:
-                s_level = "easy";
+                s_level = "3 match";
                 break;
             case 1:
-                s_level = "medium";
+                s_level = "5 match";
                 break;
             case 2:
-                s_level = "hard";
+                s_level = "7 match";
                 break;
             case 3:
-                s_level = "maniac";
+                s_level = "9 match";
                 break;
         }
 
@@ -248,11 +248,13 @@ public class MenuScreen extends AbstractGameScreen {
             @Override
             public void clicked(InputEvent event, float x, float y) {
                 //button.setText("You clicked the button");
+                GameScore.instance.resetMatches();
                 GamePreferences.instance.gameLevel = level;
                 GamePreferences.instance.save();
+
                 ScreenTransition transition = ScreenTransitionSlice.init(2, ScreenTransitionSlice.UP_DOWN, 10, Interpolation.pow5Out);
 
-                game.setScreen(new GameScreen(game), transition);
+                game.setScreen(new GameScreen(game), null);
                 //showFloatingActor(mainMenuTable, true, true);
                 //showFloatingActor(levelChooseTable, false, true);
             }

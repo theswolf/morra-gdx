@@ -1,5 +1,9 @@
 package core.september.morra;
 
+import com.badlogic.gdx.graphics.Camera;
+import com.badlogic.gdx.utils.viewport.FitViewport;
+import com.badlogic.gdx.utils.viewport.Viewport;
+
 /**
  * Created by christian on 21/03/16.
  */
@@ -63,4 +67,8 @@ public class Constants {
     public static final String SCORE = "morragame.score";
     public static final String CLAP_SOUND = "sounds/clap.wav";
     public static final String MUSIC = "music/autopiano.mp3";
+
+    public static Viewport getViewport(Camera camera) {
+        return new FitViewport(VIEWPORT_WIDTH,VIEWPORT_HEIGHT,camera);
+    }
 }

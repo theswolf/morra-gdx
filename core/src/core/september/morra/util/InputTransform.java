@@ -15,8 +15,9 @@ public class InputTransform
 
     public static float getCursorToModelX(int cursorX)
     {
-
-        return ((((float)cursorX) * appWidth) / ((float)Gdx.graphics.getWidth()));
+        //cursorX : Gdx.graphics.getWidth() = x : appWidth
+        return ((((float)  cursorX) * appWidth) / ((float)Gdx.graphics.getWidth()));
+        //return (((float)(Gdx.graphics.getWidth() + cursorX)) * appWidth / ((float)Gdx.graphics.getWidth()) );
     }
 
     public static float getCursorToModelY(int cursorY)

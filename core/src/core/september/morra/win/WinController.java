@@ -48,7 +48,8 @@ public class WinController extends InputAdapter implements Disposable {
 
     private void init() {
         level = new WinLevel( player, cpu,  playerBound,  cpuBound);
-        GameScore.instance.nextRound();
+
+        //GameScore.instance.nextRound();
         if(player+cpu == playerBound) {
             GameScore.instance.win();
         }
@@ -63,15 +64,19 @@ public class WinController extends InputAdapter implements Disposable {
     public void update (float deltaTime) {
         duration += deltaTime;
         if(duration > 1f) {
+            GameScore.instance.load();
             if(GameScore.instance.hasNextRound()) {
-                game.setScreen(new GameScreen(game), ScreenTransitionFlash.init(0.5f));
+                game.setScreen(new GameScreen(game),
+                        //ScreenTransitionFlash.init(3f)
+                        null
+                );
             }
             else {
-                game.setScreen(new ScoreScreen(game), ScreenTransitionSlide.init(0.75f, ScreenTransitionSlide.DOWN, false, Interpolation.bounceOut));
+                game.setScreen(new ScoreScreen(game), null);//ScreenTransitionSlide.init(0.75f, ScreenTransitionSlide.DOWN, false, Interpolation.bounceOut));
             }
 
         }
-        //Gdx.app.log(TAG,"WinController updating");
+        ////Gdx.app.log(TAG,"WinController updating");
     }
 
 

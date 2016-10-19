@@ -53,31 +53,20 @@ public class GameLevel extends GameLevelGraphics{
 		init();
 	}
 
+
+
     public void init() {
         super.init();
         touchables = new Array<TouchWrapper>();
         touchables.addAll(lower0, lower1, lower2, lower3, lower4, lower5);
         currentred = null;
         currentTouched = null;
+        GamePreferences.instance.load();
+        matches = GamePreferences.instance.getMatches();
 
-        int gameLevel = GamePreferences.instance.gameLevel;
-        switch (gameLevel) {
-            case 0:
-                matches = 3;
-                break;
-            case 1:
-                matches = 5;
-                break;
-            case 2:
-                matches = 7;
-                break;
-            case 3:
-                matches = 9;
-                break;
+        Gdx.app.log(TAG,String.format("There are %s matches",matches));
 
-        }
-
-        Gdx.app.log(TAG,"Matches are "+matches);
+        //Gdx.app.log(TAG,"Matches are "+matches);
 
 
 
@@ -91,7 +80,7 @@ public class GameLevel extends GameLevelGraphics{
     }
 
 	public void update (float deltaTime) {
-        //Gdx.app.log(TAG, String.format("DeltaTime %f DeltaTouch %f", deltaTime, deltaTouch));
+        ////Gdx.app.log(TAG, String.format("DeltaTime %f DeltaTouch %f", deltaTime, deltaTouch));
 
         if(currentTouched == null) {
             deltaTouch = 0;
@@ -162,7 +151,7 @@ public class GameLevel extends GameLevelGraphics{
 
 
     public void touched(Vector2 point) {
-        Gdx.app.log("Handling touch","");
+        //Gdx.app.log("Handling touch","");
         for(TouchWrapper wrapper: touchables) {
             if(wrapper.getSprite().getBoundingRectangle().contains(point)) {
                 if(currentTouched != null ) {

@@ -10,7 +10,7 @@ import core.september.morra.util.PlayServices;
 public class DesktopLauncher {
 	public static void main (String[] arg) {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-		config.width=1600;
+		config.width = 1600;
 		new LwjglApplication(new MorraGame(new PlayServices() {
 			@Override
 			public void signIn() {

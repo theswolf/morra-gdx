@@ -25,7 +25,7 @@ public class GameScore {
     public int totalwins;
     public int totalloose;
     public int round;
-    public Array<Match> matches = new Array<Match>();
+    //public Array<Match> matches ;//= new Array<Match>();
 
     private Json json;
 
@@ -50,9 +50,9 @@ public class GameScore {
         totalwins = prefs.getInteger("totalwins",0);
         totalloose = prefs.getInteger("totalloose", 0);
         String _matches = prefs.getString("matches","[]");
-        matches  = getJson().fromJson(Array.class, _matches);
-        Gdx.app.log(TAG,String.format("Loaded %s matches",_matches));
-        if(matches == null) matches = new Array<Match>();
+        //matches  = getJson().fromJson(Array.class, _matches);
+        //Gdx.app.log(TAG,String.format("Loaded %s matches",_matches));
+        //if(matches == null) matches = new Array<Match>();
     }
 
     public void save () {
@@ -61,9 +61,9 @@ public class GameScore {
         prefs.putInteger("loose",loose);
         prefs.putInteger("totalwins",totalwins);
         prefs.putInteger("totalloose",totalloose);
-        String _matches = getJson().toJson(matches);
-        prefs.putString("matches",_matches);
-        Gdx.app.log(TAG,String.format("Stored %s matches",_matches));
+        //String _matches = getJson().toJson(matches == null ? new Array<Match>() : matches);
+        //prefs.putString("matches",_matches);
+        ////Gdx.app.log(TAG,String.format("Stored %s matches",_matches));
         prefs.flush();
 
     }
@@ -73,7 +73,7 @@ public class GameScore {
         winInARow = winInARow+1;
         wins = wins+1;
         totalwins +=1;
-        matches.add(new Match(true));
+        //matches.add(new Match(true));
         save();
     }
 
@@ -82,7 +82,7 @@ public class GameScore {
         winInARow = 0;
         loose = loose+1;
         totalloose+=1;
-        matches.add(new Match(false));
+        //matches.add(new Match(false));
         save();
     }
 
@@ -90,20 +90,17 @@ public class GameScore {
         load();
         wins=0;
         loose=0;
-        matches = new Array<Match>();
+        //matches = new Array<Match>();
+        //matches.clear();
         save();
     }
 
-    public void nextRound() {
 
-        int put = (prefs.getInteger("round")+1)% GameLevel.matches;
-        prefs.putInteger("round",put);
-        Gdx.app.log(TAG,"Putting "+put);
-    }
 
     public boolean hasNextRound() {
 
-        Gdx.app.log(TAG,"Has next round "+prefs.getInteger("round",0));
-        return prefs.getInteger("round",0) < GameLevel.matches - 1;
+        //Gdx.app.log(TAG,"Has next round "+prefs.getInteger("round",0));
+        Gdx.app.log(TAG,String.format("Round %s of %s",wins+loose,GamePreferences.instance.getMatches()));
+        return (wins + loose) < GamePreferences.instance.getMatches();
     }
 }

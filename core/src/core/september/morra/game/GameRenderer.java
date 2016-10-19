@@ -15,7 +15,7 @@ import core.september.morra.Constants;
 public class GameRenderer implements Disposable {
 
     private OrthographicCamera camera;
-    private Viewport viewport;
+    public  Viewport viewport;
     private GameController controller;
     private SpriteBatch batch;
 

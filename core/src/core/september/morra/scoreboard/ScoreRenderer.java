@@ -18,7 +18,7 @@ import core.september.morra.Constants;
 public class ScoreRenderer implements Disposable {
 
     private OrthographicCamera camera;
-    private Viewport viewport;
+    public  Viewport viewport;
     private ScoreController controller;
     private SpriteBatch batch;
     private SpriteBatch colorbatch;

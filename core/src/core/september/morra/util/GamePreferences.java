@@ -69,4 +69,20 @@ public class GamePreferences {
 		AudioManager.instance.onSettingsUpdated();
 	}
 
+	public int getMatches() {
+
+		switch (gameLevel) {
+			case 0:
+				return 3;
+			case 1:
+				return 5;
+			case 2:
+				return 7;
+			case 3:
+				return 9;
+
+		}
+		return 0;
+	}
+
 }

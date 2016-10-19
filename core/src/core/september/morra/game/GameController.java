@@ -8,6 +8,7 @@ import com.badlogic.gdx.utils.Disposable;
 import core.september.morra.screens.DirectedGame;
 import core.september.morra.screens.WinScreen;
 import core.september.morra.screens.transitions.ScreenTransitionFade;
+import core.september.morra.screens.transitions.ScreenTransitionFlash;
 import core.september.morra.util.InputTransform;
 
 /**
@@ -27,9 +28,9 @@ public class GameController extends InputAdapter implements Disposable {
     }
 
     public boolean touchDown (int screenX, int screenY, int pointer, int button) {
-        //Gdx.app.log(TAG,String.format("int screenX %d, int screenY %d, int pointer %d, int button %d",screenX, screenY, pointer, button));
+        ////Gdx.app.log(TAG,String.format("int screenX %d, int screenY %d, int pointer %d, int button %d",screenX, screenY, pointer, button));
         touch = InputTransform.point(screenX,screenY);
-        //Gdx.app.log(TAG, "Touched " + touch);
+        ////Gdx.app.log(TAG, "Touched " + touch);
 
         return true;
     }
@@ -37,7 +38,7 @@ public class GameController extends InputAdapter implements Disposable {
     public void handleTouch() {
         if(touch != null) {
             level.touched(touch);
-            //Gdx.app.log(TAG, null != touched ? touched.toString() : "Untuoched" );
+            ////Gdx.app.log(TAG, null != touched ? touched.toString() : "Untuoched" );
             touch = null;
         }
 
@@ -61,10 +62,12 @@ public class GameController extends InputAdapter implements Disposable {
             int currentBound = level.currentred.id + getCurrentPlayer();
 
             if(currentBound == level.cpuBound || currentBound == level.playerBound) {
-                Gdx.app.log(TAG,"Changing screen");
+                //Gdx.app.log(TAG,"Changing screen");
                 game.setScreen(
                         new WinScreen(game, getCurrentPlayer(), level.currentred.id, level.playerBound, level.cpuBound),
-                        ScreenTransitionFade.init(1.5f));
+                        //ScreenTransitionFlash.init(3f)
+                        null
+                );
 
             }
 

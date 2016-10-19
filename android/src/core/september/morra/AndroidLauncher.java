@@ -18,11 +18,11 @@ import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.games.Games;
-import com.google.example.games.basegameutils.GameHelper;
 
 import android.widget.RelativeLayout.LayoutParams;
 
 import core.september.morra.MorraGame;
+import core.september.morra.basegameutils.GameHelper;
 import core.september.morra.util.PlayServices;
 
 public class AndroidLauncher extends AndroidApplication implements PlayServices {
@@ -166,7 +166,7 @@ public class AndroidLauncher extends AndroidApplication implements PlayServices 
 		}
 		catch (Exception e)
 		{
-			Gdx.app.log("MainActivity", "Log in failed: " + e.getMessage() + ".");
+			//Gdx.app.log("MainActivity", "Log in failed: " + e.getMessage() + ".");
 		}
 	}
 
@@ -186,7 +186,7 @@ public class AndroidLauncher extends AndroidApplication implements PlayServices 
 		}
 		catch (Exception e)
 		{
-			Gdx.app.log("MainActivity", "Log out failed: " + e.getMessage() + ".");
+			//Gdx.app.log("MainActivity", "Log out failed: " + e.getMessage() + ".");
 		}
 	}
 

@@ -39,6 +39,9 @@ public class ScoreLevel extends GameLevelGraphics{
 
     private TouchWrapper currentPlayer;
     private TouchWrapper currentCpu;
+    private int matches;
+    private int win;
+    private int loose;
 
 
     public ScoreLevel() {
@@ -54,6 +57,12 @@ public class ScoreLevel extends GameLevelGraphics{
                 Constants.VIEWPORT_WIDTH,
                 Constants.VIEWPORT_HEIGHT
         );
+        GameScore.instance.load();
+
+        win = GameScore.instance.wins;
+        loose = GameScore.instance.loose;
+        matches = win + loose;
+        //Gdx.app.log(TAG,String.format("There are %s matches",matches));
     }
 
 
@@ -78,23 +87,11 @@ public class ScoreLevel extends GameLevelGraphics{
         BitmapFont font = Assets.instance.font.defaultNormal;
         BitmapFont big = Assets.instance.font.defaultBig;
 
-        Array<Match> matches = GameScore.instance.matches;
-        Gdx.app.log(TAG,String.format("There are %s matches",matches.size));
 
-        if(matches.size == 0) return;
 
-        int level = 0;
-        int won = 0;
-        int lost = 0;
-        for(Match match:matches) {
-            level += (match.win? 1: -1);
-            if(match.win)
-                won+=1;
-            else
-                lost+=1;
-        }
-        font.setColor(level>0 ? Color.YELLOW : Color.RED);
-        font.draw(batch, String.format("YOU %s %s matches of %s!!!", level>0 ? "WIN" : "LOOSE",level>0 ? won : lost,matches.size),
+        boolean winner = win > loose;
+        font.setColor(winner ? Color.YELLOW : Color.RED);
+        font.draw(batch, String.format("YOU %s %s matches of %s!!!", winner ? "WIN" : "LOOSE",winner ? win : loose,matches),
                 Constants.VIEWPORT_WIDTH / 16, Constants.VIEWPORT_HEIGHT / 2);
 
 
