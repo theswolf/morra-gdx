@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">MorraGame</string>
+    <string name="app_name">Morra</string>
     <string name="banner_ad_unit_id">ca-app-pub-0131970786644605/8377932260</string>
 
     <string name="sign_in_failed">Failed to sign in. Please check your network connection and try again.</string>
