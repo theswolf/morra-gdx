@@ -18,6 +18,7 @@ android {
         applicationId "core.september.morra"
         minSdkVersion 15
         targetSdkVersion 24
+        setProperty("archivesBaseName", "morra")
     }
 
     signingConfigs {
